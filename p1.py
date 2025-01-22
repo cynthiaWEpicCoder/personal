@@ -1,4 +1,6 @@
-n = 24
+import csv
+
+n = 64
 lst = [[-1 for i in range(n)] for i in range(n)]
 for i in range(n):
     for j in range(n):
@@ -13,11 +15,17 @@ for i in range(n):
         while smallest in bads:
             smallest += 1
         lst[i][j] = smallest
-
+'''
 s = [[str(e) for e in row] for row in lst]
 lens = [max(map(len, col)) for col in zip(*s)]
 fmt = '\t'.join('{{:{}}}'.format(x) for x in lens)
 table = [fmt.format(*row) for row in s]
 print('\n'.join(table))
+'''
+with open("p1out.csv","w",newline="") as file:
+    writer = csv.writer(file)
+    for l in lst:
+        writer.writerow(l)
+
 
 
